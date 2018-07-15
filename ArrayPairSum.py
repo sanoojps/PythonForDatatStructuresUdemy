@@ -123,7 +123,7 @@ def pair_sum_with_set(array:list, sum_value:int):
                 # make pair
                 pair = (element_a,element_b)
                 
-                # aapend
+                # append
                 # since set won't allow duplicates 
                 pairs_array.add(pair)
                 
@@ -131,3 +131,56 @@ def pair_sum_with_set(array:list, sum_value:int):
     
             
 pair_sum_with_set([1,3,2,2] , 4)
+
+####################   
+# O(n) with set
+# From udemy Course 
+####################
+def pair_sum_with_sets_udemy(array:list, sum_value:int):
+    
+    #edge case check
+    if len(array) < 2:
+        return
+    
+    #sets for tracking
+    seen = set()
+    output = set()
+    
+    for num in array:
+        
+        # we need to make a tuple
+        # 1. first element of that tuple is "num"
+        # 2. we expect the sum of the first and second element 
+        #    to be sum_value
+        # 3. the second elemnt should be sum_value - first i.e "num"
+        # 4. find it
+        target = sum_value - num
+        
+        
+        # check if the second element has alreday been found
+        if target not in seen:
+            # if not , add it
+            seen.add(num)
+        else:
+            
+            print("target %s" %(target))
+            print("num %s" %(num))
+            
+            # number is already there in the "seen" set 
+            # make the tuple
+            min_value = min(num,target)
+            max_value = max(num,target)
+            
+            print("min_value %s" %(min_value))
+            print("max_value %s" %(max_value))
+            
+            # add 
+            # min max to order the tuple
+            output.add( (min_value,max_value) )
+            #output.add( (num,target) )
+            
+    
+    print(output)
+    
+pair_sum_with_sets_udemy([3,2,3,1,2,1,4,0] , 4)
+    
