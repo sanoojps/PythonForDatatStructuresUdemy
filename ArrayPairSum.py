@@ -65,8 +65,10 @@ that sums up to 4
 #           
 #    print(array)
 #    print(pairs_array)
-    
-
+ 
+####################   
+# O(n2) with array 
+####################
 def pair_sum(array:list, sum_value:int):
     
     pairs_array = []
@@ -99,3 +101,33 @@ def pair_sum(array:list, sum_value:int):
     
             
 pair_sum([1,3,2,2] , 4)
+
+####################   
+# O(n2) with set 
+####################
+def pair_sum_with_set(array:list, sum_value:int):
+    
+    pairs_array = set()
+    
+    for outer_index in range(0,len(array)):
+        
+        for inner_index in range(outer_index,len(array)):
+            
+            #get elements
+            element_a = array[outer_index]
+            element_b = array[inner_index]
+            
+            #check for sum
+            if element_a + element_b == sum_value:
+                
+                # make pair
+                pair = (element_a,element_b)
+                
+                # aapend
+                # since set won't allow duplicates 
+                pairs_array.add(pair)
+                
+    print(pairs_array)
+    
+            
+pair_sum_with_set([1,3,2,2] , 4)
