@@ -57,6 +57,8 @@ def make_a_matrix(
     
     print_a_matrix(rows,columns,matrix)
     
+    return matrix
+    
 make_a_matrix(3,3)
 
 """
@@ -165,59 +167,49 @@ def get_transposed_matrix(
     print("orig_matrix")
     print(matrix)
     
-    #serves as ROW
-    transposed_matrix = []
+    transposed_matrix = \
+    make_a_matrix(columns,rows)
     
-    # loop for row indexes
-    for r_index in range(0,rows):
-        
-        # inner array
-        # serves as column
-        columns_array = \
-        transposed_matrix[r_index] \
-        if len(transposed_matrix) > 0 else []
-        
-        # current row
-        row = \
-        matrix[r_index]
-            
-        # loop for column indexes
-        for c_index in range(0, len(row)):
-            
-            if c_index < rows:
-                element = \
-                row[c_index]
-        
-                # add to column
-                if len(columns_array) < rows:
-                    columns_array.append(element)
-                else:
-                    transposed_matrix.append([element])
-            
-            else:
-                # add to row
-                
-                if len(transposed_matrix) == 0:
-                    transposed_matrix.append(columns_array)
-                
-                element = \
-                row[c_index]
-                
-                if len(transposed_matrix) > rows:
-                    transposed_matrix[c_index].append(element)
-                else:
-                    transposed_matrix.append([element])
-        
-        
+    print("transposed_matrix")
     print(transposed_matrix)
+
+    # loop for row indexes
+    for r_index in range(0,columns):
+        
+        # loop for column indexes
+        for c_index in range(0,rows):
+            
+#            print(
+#                    "transposed_matrix[%s][%s] = %s \n" \
+#                    %(
+#                            r_index,
+#                            c_index,
+#                            transposed_matrix[r_index][c_index]
+#                            )
+#                    )
+#                    
+#            print(
+#                    "matrix[%s][%s] = %s \n" \
+#                    %(
+#                            c_index,
+#                            r_index,
+#                            matrix[c_index][r_index]
+#                            )
+#                    ) 
+            
+            transposed_matrix[r_index][c_index] = \
+            matrix[c_index][r_index]
+            
+         
+    #print(transposed_matrix)
     
-    #print_a_matrix(rows,columns,matrix)
+    print_a_matrix(columns,rows,transposed_matrix)
 
 #matrix = make_incremented_matrix(3,3)     
 #get_transposed_matrix(3,3,matrix)
 
-matrix = make_incremented_matrix(2,3)
-get_transposed_matrix(2,3,matrix)
+#matrix = make_incremented_matrix(2,3)
+#get_transposed_matrix(2,3,matrix)
 
 matrix = make_incremented_matrix(3,2)
 get_transposed_matrix(3,2,matrix)
