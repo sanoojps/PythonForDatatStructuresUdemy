@@ -208,8 +208,8 @@ def get_transposed_matrix(
 #matrix = make_incremented_matrix(3,3)     
 #get_transposed_matrix(3,3,matrix)
 
-#matrix = make_incremented_matrix(2,3)
-#get_transposed_matrix(2,3,matrix)
+matrix = make_incremented_matrix(2,3)
+get_transposed_matrix(2,3,matrix)
 
-matrix = make_incremented_matrix(3,2)
-get_transposed_matrix(3,2,matrix)
+#matrix = make_incremented_matrix(3,2)
+#get_transposed_matrix(3,2,matrix)
