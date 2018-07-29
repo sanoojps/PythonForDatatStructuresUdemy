@@ -57,6 +57,7 @@ large_count_sum([-2,1,-2,3,4,2]) #9
 large_count_sum([1,2,-1,3,4,10,10,-10,-1]) #29
 
 
+
 # still no able to find the actual sub sequence    
 def large_count_sum_my_way(array: list):
     
@@ -66,33 +67,49 @@ def large_count_sum_my_way(array: list):
     
     max_sum = current_sum = 0
     
-    max_sub_sequence = set(array)
+    max_sub_sequence = []
     
     for number in array:
         
         current_sum = \
         current_sum + number
-        max_sub_sequence.add(number)
+        
+        #print("When you add")
+        max_sub_sequence.append(number)
+        
+        #print(max_sub_sequence)
         
         # -ve current sum
         if current_sum < 0:
             current_sum = 0
-            max_sub_sequence.clear()
+            
+            #max_sub_sequence.pop()
+            
+            #print("After pop")
+            #print(max_sub_sequence)
             
         # max_sum < current_sum
         elif max_sum < current_sum:
             max_sum = current_sum
-            max_sub_sequence.add(number)
+            
+            print("New Max Sum")
+            print(max_sub_sequence)
             
         
+    print("Finale")
     print(max_sum)
     print(max_sub_sequence)
             
-            
+print("large_count_sum_my_way")            
 large_count_sum_my_way([1,2,-1,3,4,10,10,-10,-1])        
 # Output 
 # 29
-#[1, 2, 3, 4, 10, 10]        
+#[1, 2, 3, 4, 10, 10]       
+
+print("large_count_sum_my_way [-1,-2,-1,-3,-4,-10,-10,-10,-1]")    
+large_count_sum_my_way(  
+[-1,-2,-1,-3,-4,-10,-10,-10,-1] 
+)
         
 def large_count_sum_hash(array: list):
      
@@ -125,6 +142,7 @@ def large_count_sum_hash(array: list):
          
          
 large_count_sum_hash([1,2,-1,3,4,10,10,-10,-1]) 
+large_count_sum_hash([-1,-2,-1,-3,-4,-10,-10,-10,-1]) 
           
          
         
@@ -154,3 +172,7 @@ print(large_count_sum_preferred_solution(
         [1,2,-1,3,4,10,10,-10,-1]
         )
          ) #29
+print(large_count_sum_preferred_solution(
+        [-1,-2,-1,-3,-4,-10,-10,-10,-1]
+        )
+         ) #-1

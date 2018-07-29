@@ -127,6 +127,7 @@ def compress_string_preferred_solution(string: str):
         
 print("compress_string_preferred_solution")
 compress_string_preferred_solution("AAB")
+compress_string_preferred_solution("ABCDE")
     
     
     
