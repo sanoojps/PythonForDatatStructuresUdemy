@@ -27,6 +27,10 @@ class DeQue(object):
     
     # at array size
     def _get_front_index(self):
+        
+        if self.is_empty():
+            return 0
+        
         return len(self.items) -1
     
     def is_empty(self):
