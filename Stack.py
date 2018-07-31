@@ -35,32 +35,43 @@ class Stack(object):
     # pop from top
     # pop index = len(self.items) - 1 
     def pop(self):
+        
+        if self.is_empty():
+            return None
+        
         return self.items.pop()
         
     # return top    
     def peek(self):
+        
+        if self.is_empty():
+            return None
+        
         return self.items[len(self.items) - 1]
     
     def size(self):
         return len(self.items)
 
 
-s = Stack()
+def test_stack():
 
-print(s.is_empty())
-
-s.push("one")    
-s.push("two")
-
-print(s.items)
-
-print(s.peek())
-
-print(s.size())
-
-print(s.is_empty())  
-
-print(s.pop())
-
-print(s.size())   
-print(s.peek())   
+    s = Stack()
+    
+    
+    print(s.is_empty())
+    
+    s.push("one")    
+    s.push("two")
+    
+    print(s.items)
+    
+    print(s.peek())
+    
+    print(s.size())
+    
+    print(s.is_empty())  
+    
+    print(s.pop())
+    
+    print(s.size())   
+    print(s.peek())   
