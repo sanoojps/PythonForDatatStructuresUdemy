@@ -268,3 +268,55 @@ def test_balance_checks_preferred():
 #    print(balance_check(str1))        
 
 test_balance_checks_preferred()
+
+
+
+def balance_checks_best_sln(string: str):
+    
+    print(string)
+    
+    # odd length check
+    # odd -> unbalanced
+    if len(string) % 2 != 0:
+        return False
+    
+    opening = \
+    set("([{")
+    
+    matches = \
+    set(
+        [
+                ("(",")"),
+                ("[","]"),
+                ("{","}"),
+        ]
+        )
+    
+    stack = []
+    
+    
+    for char in string:
+        
+        if char in opening:
+            stack.append(char)
+            
+        else:
+            
+            # first char is a closing braces
+            if len(stack) == 0:
+                return False
+            
+            last_open = \
+            stack.pop()
+            
+            if (last_open,char) not in matches:
+                return False
+            
+    return len(stack) == 0
+            
+print("balance_checks_best_sln")  
+print(balance_checks_best_sln("[]"))
+print(balance_checks_best_sln(
+        "[](){([[[]]])}"
+        )
+        )
