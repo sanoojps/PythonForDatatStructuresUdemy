@@ -54,7 +54,7 @@ def nth_to_last_node(
     ideally index = size - (n-1)
     
     """
-    index = (size - nth_index) + 1 
+    index = (size - (nth_index - 1)) 
     
     count = 0
     
