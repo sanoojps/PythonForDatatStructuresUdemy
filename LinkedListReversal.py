@@ -34,8 +34,8 @@ def reverse_list(linked_list:SinglyLinkedList):
     while current_node != None:
         
         # logic
-        # 1. current nodes next node's next will be  
-        #    current node
+        # 1. current nodes next node will be  
+        #    previous node
         #
         #
         #
@@ -44,7 +44,7 @@ def reverse_list(linked_list:SinglyLinkedList):
         # get current node's next
         next_node = current_node.get_next()
         
-        # next node's next is previous node
+        # current_node's next is previous node
         current_node.set_next(
                 previous_node
                 )
