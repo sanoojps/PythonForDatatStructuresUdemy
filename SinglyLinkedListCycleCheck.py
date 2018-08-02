@@ -47,6 +47,7 @@ def cycle_check(linked_list:SinglyLinkedList):
         print("successor_one_node")
         print(successor_one_node.get_value())
         
+        # check if they are equal
         if successor_two_nodes.get_value() == \
         successor_one_node.get_value() :
             
