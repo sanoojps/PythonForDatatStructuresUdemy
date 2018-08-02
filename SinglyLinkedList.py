@@ -13,7 +13,32 @@ tail = last node
 
 """
 
-
+class SinglyLinkedListOperations(object):
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+    
+    def is_empty(self):
+        pass
+    
+    def add(self, item):
+        pass
+    
+    def size(self)-> int:
+        pass
+    
+    def search(self, item)-> bool:
+        pass
+            
+    def predecessor(self,item):
+        pass    
+    
+    def remove(self,item):
+        pass
+    
+    
 class Node(object):
     
     def __init__(self,element):
@@ -36,9 +61,9 @@ class Node(object):
         self.next = next_node
         
     
-class SinglyLinkedList(object):
+class SinglyLinkedList(SinglyLinkedListOperations):
     
-    def __init__(self,):
+    def __init__(self):
         self.head = None
         self.tail = None
         self.count = 0
