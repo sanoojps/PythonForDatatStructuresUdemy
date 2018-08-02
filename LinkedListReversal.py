@@ -65,4 +65,52 @@ def reverse_list(linked_list:SinglyLinkedList):
 
 print("reverse_list")
 printSinglyLinkedList(reverse_list(a))
+
+
+def list_reversal(linked_list:SinglyLinkedList):
+
+  """
+  Logic
+  -----
+
+  current_node->next = current_node->previous_node
+
+   1->2->3->4
+
+   1<-2<-3<-4 
+
+  """
+
+  # Loop
+
+  current_node = linked_list.head
+
+  previous_node = None
+
+  next_node = None
+
+  while current_node != None:
+
+    # cache next node
+    next_node = current_node.get_next()
+
+    # current_node->next = current_node->previous_node
+    current_node.set_next(
+      previous_node
+    )
+
+    #previous node
+    previous_node = current_node
+
+    # lopp increment
+    current_node = next_node
+
+
+  linked_list.head = previous_node
+
+  return linked_list
+
+a = list_reversal(a)
+
+printSinglyLinkedList(a)
     

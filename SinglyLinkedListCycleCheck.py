@@ -31,7 +31,7 @@ def cycle_check(linked_list:SinglyLinkedList):
     
     # begin loop
     # with both markers at same node
-    while successor_one_node != None \
+    while successor_two_nodes != None \
     and successor_two_nodes.get_next() != None :
         
         # marker 1 -> next node
@@ -54,8 +54,35 @@ def cycle_check(linked_list:SinglyLinkedList):
             return True
 
     return False
-        
-                        
+
+
+def cycle_check_singly_linked_list(linked_list:SinglyLinkedList):
+
+  # logic
+  # make 2 markers
+  # marker 1 - current node
+  # marker 2 - current node + 2
+  # cycle = currenetnode->next = current->next->next
+  # 1->2->3->2
+  # 1->2 = 1->2->3->2
+
+  # loop
+
+  current_node = linked_list.head
+  marker_1 =  current_node
+  marker_2 = current_node
+
+  while marker_2 != None and marker_2.get_next() != None:
+
+    marker_1 = marker_1.get_next()
+
+    marker_2  = marker_2.get_next().get_next()
+
+    if marker_1.get_value() == marker_2.get_value():
+      return True
+
+  return False
+
    
 def test_cycle():
     
