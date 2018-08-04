@@ -314,7 +314,7 @@ print(make_substring_and_match_appr(
                     
                     
                     
-                    
+# will fail if word[0] matches anyother letter       
 def make_substring_and_match_appr_using_indexes_and_slices(
         phrase:str,
         list_of_words: list):
@@ -351,8 +351,10 @@ def make_substring_and_match_appr_using_indexes_and_slices(
                 index += 1
                 
         return (matches)
-        
-phrase = "ilovedogsjohn" 
+      
+# works for 
+# phrase = "izzzlovezzzzdogszzzzjohnzzzz" 
+phrase = "ilovedogjohn" 
 list_of_words = [
        "i",
         "am",
@@ -373,36 +375,83 @@ print(
       
       
       
-# find a sub array
-# with elemnts whose characters match the ones in 
-# letters_to_match
-def sub_array_with_matches(
-        array_of_words: list,
-        letters_to_match: str
-        ):
-    
-    match = []
-    
-    for char in letters_to_match:
-        
-        matches = set()
-        index = 0
-        for word in array_of_words:
-            
-            # start matching
-            if word[index] == char:
-                matches.add(word)
-            else:
-                index += 1
-                
-        
-        
-    
+## find a sub array
+## with elements whose characters match the ones in 
+## letters_to_match
+#def sub_array_with_matches(
+#        array_of_words: list,
+#        letters_to_match: str
+#        ):
+#    
+#    matches = set()
+#    
+#    char_substring = ""
+#    for char in letters_to_match:
+#        
+#        for word in array_of_words:
+#            
+#            # start matching
+#            if word[0] == char:
+#                matches.add(word)
+#         
+#            
+#    print(matches)
+#                
+#        
+#print("sub_array_with_matches")
+#print(
+#      sub_array_with_matches(
+#        list_of_words,
+#        phrase
+#        )
+#        ) # ['i', 'dogs', 'love', 'john'] 
+#    
     
 def word_split_matching_order(
         phrase:str,
-        list_of_words: list):
+        list_of_words: list,
+        output = None) :
+            
+    print("phrase")
+    print(phrase)
     
-        matches = []
+    if output is None:
+        output = []
         
+    for word in list_of_words:
         
+        if phrase.startswith(word):
+            
+            output.append(word)
+            
+            return \
+        word_split_matching_order(
+                phrase[len(word):],
+                list_of_words,
+                output
+                )
+        
+    return output
+
+
+# doesn't work for     
+# phrase = "izzzlovezzzzdogszzzzjohnzzzz" 
+phrase = "ilovedogjohn" 
+list_of_words = [
+       "i",
+        "am",
+        "a",
+        "dogs",
+        "lover",
+        "love",
+        "john"
+        ]
+print("word_split_matching_order")
+print(
+      word_split_matching_order(
+        phrase,
+        list_of_words
+        )
+        ) # ['i', 'dogs', 'love', 'john'] 
+    
+       
