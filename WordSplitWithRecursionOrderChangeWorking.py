@@ -132,26 +132,27 @@ def make_substring_and_match_appr(
                         len(word)
                         )    
                 
-                if tmp_substring == None:
-                    pass
-                
+    
                 print(tmp_substring)
                 
                 if word == tmp_substring:
                     matches.append(tmp_substring)
+                    
+                    # push the index
+                    
+                    tmp_substring_length = \
+                0 if tmp_substring is None  else (len(tmp_substring) - 1)
+                
+                    limit = \
+                    limit + tmp_substring_length + phrase_index
                 
                 # substrings don't match
                 # so keep moving forward
                 else:
+                    # push the index
+                    #limit = limit + 1
                     pass
                 
-                # push the index
-                
-                tmp_substring_length = \
-                0 if tmp_substring is None  else (len(tmp_substring) - 1)
-                
-                limit = \
-                limit + tmp_substring_length + phrase_index
                 
                 print("limit %s" %(limit))
                 
@@ -229,7 +230,27 @@ print(
 #        )
 
 
-phrase = "ilovedogsjohngerrard" 
+#phrase = "ilovedogsjohngerrard" 
+#list_of_words = [
+#        "i",
+#        "am",
+#        "a",
+#        "dogs",
+#        "gerrard",
+#        "lover",
+#        "love",
+#        "john"
+#        ]
+#
+#print(make_substring_and_match_appr(
+#        phrase = phrase,
+#        list_of_words = list_of_words
+#        )
+#        ) # ['i', 'a', 'dogs', 'gerrard', 'love', 'john']
+
+
+phrase = "ilovedogsgerrardjohn" 
+
 list_of_words = [
         "i",
         "am",
@@ -245,4 +266,10 @@ print(make_substring_and_match_appr(
         phrase = phrase,
         list_of_words = list_of_words
         )
-        ) # ['i', 'dogs', 'love', 'john']
+        ) # ['i', 'a', 'dogs', 'love', 'john']
+      
+      # gerrard missing
+      # fixed
+      #['i', 'a', 'dogs', 'gerrard', 'love', 'john']
+      # no movement if no match
+      
