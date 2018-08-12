@@ -25,19 +25,46 @@ out ["xxx","xxx","xxx","xxx","xxx","xxx"]
 
 """
 
+
 def permute(string: str):
     
-    if string == None or string[1:] == None:
-        return ""
+    print("string %s" %(string))
     
-    for main_char in string:
+    out = []
+     
+    if len(string) == 1:
+        out = [string]
+    
+   
+    else:
         
-        for perm_char in string[1:]:
+        for index,char in enumerate(string):
             
-            return main_char + permute(string[1:])
+            print("char %s" %(char))
             
+            tmp_holder = \
+            string[:index] + string[index + 1:]
+            
+#            print(
+#                    "string[:%s] %s" %(index , string[:index]
+#                    ))
+#            print(
+#                    "string[%s + 1:] %s" %(
+#                            index,string[index + 1:]
+#                            )
+#                    )
+            
+            print(
+                    "tmp_holder %s" %(tmp_holder
+                    ))
+            
+            for elem in permute(tmp_holder):
+                
+                out += [char + elem]
+            
+    return out
         
-        
+    
         
 print(permute("abc"))
     
