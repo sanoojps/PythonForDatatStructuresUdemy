@@ -26,8 +26,6 @@ def fibonacci(number:int):
     seed_one = 1
     seed_two = 1
     
-    prev_sum = 0
-    
     fibonacci= []
     
     for index in range(0,number):
@@ -45,14 +43,13 @@ def fibonacci(number:int):
             if number == len(fibonacci):
                 break
             
-            sum = seed_one  + prev_sum
+            sum = seed_one  + seed_two
             
             fibonacci.append(sum)
             
         seed_one = seed_two
         seed_two = sum
         
-        prev_sum = sum
         
     print("sum %s" %(fibonacci))
     
@@ -132,3 +129,22 @@ Memoize RECURSION
 
 """
 
+# Cache
+n = 10
+cache = [None] * (n+1)
+
+def fib_dyn(n):
+    
+    # Base Case
+    if n <= 1:
+        return n 
+    
+    # Check Cache
+    
+    if cache[n] != None:
+        return cache[n]
+    
+    # Keep Setting Cache
+    cache[n] = fib_dyn(n-1) + fib_dyn(n-2) 
+    
+    return cache[n]
