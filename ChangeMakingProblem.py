@@ -54,36 +54,80 @@ minimum number of coins = 1
 #print(dynamicCoinChange([1,5,10],9))
     
 
-def coin_change(coins: list = [1,5,10], change: int = 9):
+#def coin_change(coins: list = [1,5,10], change: int = 9):
+#    
+#    options = \
+#    [0 for i in range( 0, change + 1)]
+#    
+#    coin_count = \
+#    len(coins)
+#    
+#    for index in range(1,change + 1):
+#        
+#        smallest = float("inf")
+#        
+#        for coin_index in range(0,coin_count):
+#            
+#            if coins[coin_index] <= index :
+#                
+#                tmp_options = \
+#                options[ index - coins[coin_index] ]
+#                
+#                smallest = \
+#                min(
+#                        smallest, 
+#                        tmp_options
+#                        )
+#                
+#        options[ index ] = 1 + smallest
+#        
+#    return options[ change ]
+#        
+#                
+#print(coin_change([1,5,10],109))
+## 10 * 11 = 100 5 * 1 = 15 1 * 4 = 4 = 119
+## 10 * 10 = 100 5 * 1 = 15 1 * 4 = 4 = 109
+
+
+def coin_change(coins: list = [1,5,10], change: int = 4):
     
+    # make an array of size as change + 1
     options = \
     [0 for i in range( 0, change + 1)]
+    
+    print("options")
+    print(options)
     
     coin_count = \
     len(coins)
     
+    # lo0p through size of change
     for index in range(1,change + 1):
         
+        # smallest
         smallest = float("inf")
         
+        # loop through coins
         for coin_index in range(0,coin_count):
             
-            if coins[coin_index] <= index :
+            # check if coin index is less that 
+            # value in change
+            
+            if coins[coin_index] <= index:
                 
-                tmp_options = \
-                options[ index - coins[coin_index] ]
+                tmp_option = \
+                options[ index -  coins[coin_index] ]
                 
                 smallest = \
-                min(
-                        smallest, 
-                        tmp_options
-                        )
+                min(smallest,tmp_option)
                 
         options[ index ] = 1 + smallest
         
-    return options[ change ]
-        
-                
-print(coin_change([1,5,10],109))
-# 10 * 10 = 100 5 * 3 = 15 1 * 4 = 4 = 119
+    return options [ change ]
+            
+            
+    
+
+print(coin_change())
+
     
