@@ -70,4 +70,206 @@ maximum level of any node in the tree
 
 """
 
-  
+
+
+"Tree with lists"
+
+"""
+Binary Tree
+"""
+"""
+                a
+               -  -
+               |  |
+               b  c  
+             --   --
+             | |  |
+             d e  f 
+
+
+
+my_tree = 
+[
+["a",
+[  ["b", [  "d" , [],[] ],[ "e" , [], [] ]  ]  ],
+[  "c", [ ["f" , [] , [] ]  ], []   ]
+]
+]
+
+
+
+"""
+
+class BinaryTreeWithList(object):
+    
+    def __init__(self,payload):
+        self.root = self.make_binary_tree(payload)
+       
+    
+    def make_binary_tree(self,payload):
+         return [payload, [], []]
+     
+    def insert_left(self,root: list,new_branch_payload):
+        
+        # get left branch
+        # left_branch at index 1
+        # right_branch at index 2
+        left_branch = \
+        root.pop(1)
+        
+        new_branch = \
+        self.make_binary_tree(new_branch_payload)
+        
+        new_branch[1] = \
+        left_branch
+        
+        root.insert(1,new_branch)
+        
+        return new_branch
+        
+    def insert_right(self,root: list,new_branch_payload):
+        
+        # get right branch
+        # left_branch at index 1
+        # right_branch at index 2
+        right_branch = \
+        root.pop(2)
+        
+        new_branch = \
+        self.make_binary_tree(new_branch_payload)
+        
+        new_branch[2] = \
+        right_branch
+        
+        root.insert(2,new_branch)
+        
+        return new_branch
+        
+    def get_root_val(self):
+        return self.root[0]
+    
+    def set_root_val(self,payload:object):
+        self.root[0] = payload
+        
+    def get_left_child(self,branch:list):
+        return branch[1]
+    
+    def get_right_child(self,branch:list):
+        return branch[2]
+    
+def testBinaryTreeWithList():
+    """  
+    Binary Tree
+
+
+                a
+               -  -
+               |  |
+               b  c  
+             --   --
+             | |  |
+             d e  f 
+    """
+    
+    binaryTree = BinaryTreeWithList("a")
+    print(binaryTree.root) 
+    #['a', [], []]
+    
+    new_branch = \
+    binaryTree.insert_left(binaryTree.root,"b")
+    print(binaryTree.root) 
+    
+#    binaryTree.insert_left(new_branch,"d")
+#    print(binaryTree.root) 
+    
+    new_branch = \
+    binaryTree.insert_right(binaryTree.root,"c")
+    print(binaryTree.root) 
+    
+    binaryTree.insert_left(new_branch,"f")
+    print(binaryTree.root) 
+    
+testBinaryTreeWithList()
+    
+
+
+"""
+
+TREE with OOP
+
+"""
+
+class BinaryTree(object):
+    
+    def __init__(self,root_obj):
+        
+        self.key = root_obj
+        self.left_child = None
+        self.right_child = None
+        
+    def __repr__(self):
+        return self.key
+        
+    def insert_left(self,new_node):
+        
+        new_child = BinaryTree(new_node)
+        
+        if self.left_child == None:
+            self.left_child = new_child
+        else:
+            
+            new_child.left_child = self.left_child
+            
+            self.left_child = new_child
+        
+        
+    def insert_right(self,new_node):
+        
+        new_child = BinaryTree(new_node)
+        
+        if self.right_child == None:
+            self.right_child = new_child
+        else:
+            
+            new_child.right_child = self.right_child
+            
+            self.right_child = new_child
+        
+    
+    def get_right_child(self):
+        return self.right_child
+    
+    def get_left_child(self):
+        return self.left_child
+        
+    def set_root_value(self,payload):
+        self.key = payload
+        
+    def get_root_value(self):
+        return self
+
+
+
+def testBinaryTree():
+    """  
+    Binary Tree
+
+
+                a
+               -  -
+               |  |
+               b  c  
+             --   --
+             | |  |
+             d e  f 
+    """
+    binaryTree = BinaryTree("a")
+    print(binaryTree)
+    
+    binaryTree.insert_left("b")
+    print(binaryTree.get_left_child())
+    
+    binaryTree.insert_right("c")
+    print(binaryTree.get_right_child())
+    
+testBinaryTree()
