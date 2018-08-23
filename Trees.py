@@ -103,8 +103,20 @@ my_tree =
 class BinaryTreeWithList(object):
     
     def __init__(self,payload):
-        self.root = self.make_binary_tree(payload)
+        self._root = self.make_binary_tree(payload)
        
+    @property
+    def root(self):
+        return self._root
+    
+    @root.getter
+    def root(self):
+        return self._root
+    
+    @root.setter
+    def root(self,value):
+        self._root = value
+    
     
     def make_binary_tree(self,payload):
          return [payload, [], []]
