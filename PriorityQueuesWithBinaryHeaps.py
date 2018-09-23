@@ -196,7 +196,7 @@ class BinaryHeap(BinaryHeapADT):
     1. Mostly starts at root
     2. Check if it has children
     3. loop as long as it has children ie. 2p reaches last element
-    4. find minChild
+    4. find minChild ie. child of the nod with the minimum value
     """
     def percolate_down(self,index: int):
         
@@ -204,9 +204,13 @@ class BinaryHeap(BinaryHeapADT):
         
         while (index * 2) <= self.current_size:
             
+            # find the child of this node with the minimum value
+            # get its index
             min_child_index = self.min_child_index(index)
             
-            # compare this node and min index
+            # compare this node and min child's index
+            # if current index i.e index of current node 
+            # greater than minimum child the swap
             if self.heap_list[index] > \
                self.heap_list[min_child_index]:
                    
