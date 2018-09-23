@@ -213,6 +213,32 @@ TREE with OOP
 
 class BinaryTree(object):
     
+    @property
+    def key(self):
+        return self._root
+    
+    @key.getter
+    def key(self):
+        return self._root
+    
+    @key.setter
+    def key(self,value):
+        self._root = value
+        
+        
+    @property
+    def left_child(self):
+        return self._left_child
+    
+    @left_child.getter
+    def left_child(self):
+        return self._left_child
+    
+    @left_child.setter
+    def left_child(self,value):
+        self._left_child = value
+    
+    
     def __init__(self,root_obj):
         
         self.key = root_obj
@@ -285,3 +311,83 @@ def testBinaryTree():
     print(binaryTree.get_right_child())
     
 testBinaryTree()
+
+
+"""
+Tree Traversals
+
+1. Preorder
+    1. we visit root node first
+    2. then recirsively do preorder traversal of left-subtree
+    3. then recirsively do preorder traversal of right-subtree
+    
+2. InOrder
+    1. then recirsively do inorder traversal of left-subtree
+    2. visit root node
+    3. then recirsively do inorder traversal of right-subtree
+
+3. PostOrder
+    1. then recirsively do PostOrder traversal of left-subtree
+    2. then recirsively do PostOrder traversal of right-subtree
+    3. visit root node
+
+"""
+
+"""
+BOOK-CHAPTERS-TREE
+"""
+def constructBinaryTree():
+    """  
+    Binary Tree
+
+
+               book
+               -         -
+               |         |
+               1         2  
+             
+            -------     ------
+            |     |     |     | 
+           1.1   1.2   2.1  2.2
+           
+       ------                   ------_
+       |     |                  |     |
+   1.1.1   1.1.2               2.2.1  2.2.2  
+       
+    """
+    binaryTree = BinaryTree("book")
+    print(binaryTree)
+    
+    binaryTree.insert_left("1")
+    print(binaryTree.get_left_child())
+    
+    binaryTree.insert_right("2")
+    print(binaryTree.get_right_child())
+    
+    #1
+    binaryTree.get_left_child().insert_left("1.1")
+    print(binaryTree.get_left_child().get_left_child())
+    binaryTree.get_left_child().insert_right("1.2")
+    print(binaryTree.get_left_child().get_right_child())
+    
+    #2
+    binaryTree.get_right_child().insert_left("2.1")
+    print(binaryTree.get_right_child().get_left_child())
+    binaryTree.get_right_child().insert_right("2.2")
+    print(binaryTree.get_right_child().get_right_child())
+    
+    #1.1
+    binaryTree.get_left_child().get_left_child().insert_left("1.1.1")
+    print(binaryTree.get_left_child().get_left_child().get_left_child())
+    binaryTree.get_left_child().get_left_child().insert_right("1.1.2")
+    print(binaryTree.get_left_child().get_left_child().get_right_child())
+    
+    #2.2
+    binaryTree.get_right_child().get_right_child().insert_left("2.2.1")
+    
+    print(binaryTree.get_right_child().get_right_child().get_left_child())
+    
+    binaryTree.get_right_child().get_right_child().insert_right("2.2.2")
+    print(binaryTree.get_right_child().get_right_child().get_right_child())
+    
+constructBinaryTree()
