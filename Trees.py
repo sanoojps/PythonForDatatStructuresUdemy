@@ -285,6 +285,15 @@ class BinaryTree(object):
         
     def get_root_value(self):
         return self
+    
+    def preOrder(self):
+        print(self.key)
+        
+        if self.left_child:
+            self.left_child.preOrder()
+            
+        if self.right_child:
+            self.right_child.preOrder
 
 
 
@@ -356,38 +365,93 @@ def constructBinaryTree():
        
     """
     binaryTree = BinaryTree("book")
-    print(binaryTree)
+    #print(binaryTree)
     
     binaryTree.insert_left("1")
-    print(binaryTree.get_left_child())
+    #print(binaryTree.get_left_child())
     
     binaryTree.insert_right("2")
-    print(binaryTree.get_right_child())
+    #print(binaryTree.get_right_child())
     
     #1
     binaryTree.get_left_child().insert_left("1.1")
-    print(binaryTree.get_left_child().get_left_child())
+    #print(binaryTree.get_left_child().get_left_child())
     binaryTree.get_left_child().insert_right("1.2")
-    print(binaryTree.get_left_child().get_right_child())
+    #print(binaryTree.get_left_child().get_right_child())
     
     #2
     binaryTree.get_right_child().insert_left("2.1")
-    print(binaryTree.get_right_child().get_left_child())
+    #print(binaryTree.get_right_child().get_left_child())
     binaryTree.get_right_child().insert_right("2.2")
-    print(binaryTree.get_right_child().get_right_child())
+    #print(binaryTree.get_right_child().get_right_child())
     
     #1.1
     binaryTree.get_left_child().get_left_child().insert_left("1.1.1")
-    print(binaryTree.get_left_child().get_left_child().get_left_child())
+    #print(binaryTree.get_left_child().get_left_child().get_left_child())
     binaryTree.get_left_child().get_left_child().insert_right("1.1.2")
-    print(binaryTree.get_left_child().get_left_child().get_right_child())
+    #print(binaryTree.get_left_child().get_left_child().get_right_child())
     
     #2.2
     binaryTree.get_right_child().get_right_child().insert_left("2.2.1")
     
-    print(binaryTree.get_right_child().get_right_child().get_left_child())
+    #print(binaryTree.get_right_child().get_right_child().get_left_child())
     
     binaryTree.get_right_child().get_right_child().insert_right("2.2.2")
-    print(binaryTree.get_right_child().get_right_child().get_right_child())
+    #print(binaryTree.get_right_child().get_right_child().get_right_child())
+    
+    return binaryTree
     
 constructBinaryTree()
+
+def preOrderTraversal(b_tree:BinaryTree):
+    
+    if b_tree:
+        
+        #print root
+        print(b_tree.get_root_value())
+        
+        # preorder left- children
+        preOrderTraversal(b_tree.get_left_child())
+        
+        # preorder right children
+        preOrderTraversal(b_tree.get_right_child())
+        
+
+print("begin_preOrderTraversal")
+preOrderTraversal(constructBinaryTree())
+
+def inOrderTraversal(b_tree:BinaryTree):
+    
+    if b_tree:
+        
+        # inorder left- children
+        inOrderTraversal(b_tree.get_left_child())
+        
+        #print root
+        print(b_tree.get_root_value())
+        
+        # inorder right children
+        inOrderTraversal(b_tree.get_right_child())
+        
+
+print("begin_inOrderTraversal")
+inOrderTraversal(constructBinaryTree())
+
+def postOrderTraversal(b_tree:BinaryTree):
+    
+    if b_tree:
+        
+        # post order left- children
+        postOrderTraversal(b_tree.get_left_child())
+        
+        # post order right children
+        postOrderTraversal(b_tree.get_right_child())
+        
+        #print root
+        print(b_tree.get_root_value())
+        
+
+print("begin_postOrderTraversal")
+postOrderTraversal(constructBinaryTree())
+
+
