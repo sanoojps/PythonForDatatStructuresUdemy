@@ -263,4 +263,4 @@ def get_anagrams_(word_list:list = NSArray):
 
 
 print(get_anagrams_()) 
-//['amleth,hamlet', 'dirty room,dormitory', 'listen,silent,tinsel', 'pear']
+#['amleth,hamlet', 'dirty room,dormitory', 'listen,silent,tinsel', 'pear']
